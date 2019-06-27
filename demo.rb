@@ -4,6 +4,7 @@ require 'selenium-webdriver'
 # Initialize the eyes SDK and set your private API key.
 eyes = Applitools::Selenium::Eyes.new
 eyes.api_key = ENV['APPLITOOLS_API_KEY']
+eyes.match_level = Applitools::MATCH_LEVEL[:layout]
 
 # Open a Chrome Browser.
 driver = Selenium::WebDriver.for :chrome
@@ -14,7 +15,7 @@ begin
             viewport_size: { width: 800, height: 600 }, driver: driver) do
 
     # Navigate the browser to the "hello world!" web-site.
-    driver.get 'https://applitools.com/helloworld'
+    driver.get 'https://applitools.com/helloworld?diff1'
 
     # Visual checkpoint #1.
     eyes.check_window 'Hello!'
